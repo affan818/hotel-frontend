@@ -9,7 +9,9 @@ const BookingList = () => {
   useEffect(() => {
     const fetchBookings = async () => {
       try {
-        const { data } = await axios.get("http://localhost:5000/get-bookings");
+        const { data } = await axios.get(
+          "https://hotel-backend-f7jk.onrender.com/get-bookings"
+        );
         setBookings(data);
       } catch (error) {
         console.error("Error fetching bookings:", error);
