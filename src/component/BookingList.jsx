@@ -10,7 +10,7 @@ const BookingList = () => {
     const fetchBookings = async () => {
       try {
         const { data } = await axios.get(
-          "https://hotel-backend-f7jk.onrender.com/get-bookings"
+          "https://hotel-backend-sa05.onrender.com/get-bookings"
         );
         setBookings(data);
       } catch (error) {

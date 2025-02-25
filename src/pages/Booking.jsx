@@ -37,7 +37,7 @@ const Booking = () => {
     setError(""); // Clear error message
 
     try {
-      const { data } = await axios.post("https://hotel-backend-f7jk.onrender.com/create-order", {
+      const { data } = await axios.post("https://hotel-backend-sa05.onrender.com/create-order", {
         amount: totalPrice,
         name,
         email,
@@ -55,7 +55,7 @@ const Booking = () => {
         description: `Booking for ${personCount} persons`,
         order_id: data.id,
         handler: async function (response) {
-          await axios.post("https://hotel-backend-f7jk.onrender.com/save-booking", {
+          await axios.post("https://hotel-backend-sa05.onrender.com/save-booking", {
             name,
             email,
             mobile,
