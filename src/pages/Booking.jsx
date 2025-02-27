@@ -37,15 +37,18 @@ const Booking = () => {
     setError(""); // Clear error message
 
     try {
-      const { data } = await axios.post("https://hotel-backend-sa05.onrender.com/create-order", {
-        amount: totalPrice,
-        name,
-        email,
-        mobile,
-        showTime,
-        date,
-        personCount,
-      });
+      const { data } = await axios.post(
+        "https://hotel-backend-sa05.onrender.com/create-order",
+        {
+          amount: totalPrice,
+          name,
+          email,
+          mobile,
+          showTime,
+          date,
+          personCount,
+        }
+      );
 
       const options = {
         key: "rzp_test_RIJmuH8cQwVzLT",
@@ -55,17 +58,20 @@ const Booking = () => {
         description: `Booking for ${personCount} persons`,
         order_id: data.id,
         handler: async function (response) {
-          await axios.post("https://hotel-backend-sa05.onrender.com/save-booking", {
-            name,
-            email,
-            mobile,
-            showTime,
-            date,
-            personCount,
-            paymentId: response.razorpay_payment_id,
-            orderId: data.id,
-            amount: totalPrice,
-          });
+          await axios.post(
+            "https://hotel-backend-sa05.onrender.com/save-booking",
+            {
+              name,
+              email,
+              mobile,
+              showTime,
+              date,
+              personCount,
+              paymentId: response.razorpay_payment_id,
+              orderId: data.id,
+              amount: totalPrice,
+            }
+          );
           alert("Payment Successful!");
         },
         prefill: { name, email, contact: mobile },
